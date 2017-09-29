@@ -1,3 +1,3 @@
 # Vue Echarts lite
 
-Vue.js 2.0+ directive for baidu echarts v3
+Vue.js 2.0+ component for baidu echarts v3
