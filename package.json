@@ -1,0 +1,23 @@
+{
+  "name": "demo4vue-echarts-lite",
+  "version": "1.0.0",
+  "description": "demo for vue-echarts-lite",
+  "scripts": {
+    "build": "npm run clean && webpack -p --progress --colors",
+    "clean": "del-cli demo.min.js"
+  },
+  "author": "LeungZ",
+  "license": "MIT",
+  "dependencies": {
+  },
+  "devDependencies": {
+    "css-loader": "^0.28.7",
+    "del-cli": "^1.0.0",
+    "eslint": "^4.2.0",
+    "eslint-loader": "^1.9.0",
+    "eslint-plugin-vue": "^3.1.0",
+    "vue-loader": "^13.0.5",
+    "vue-template-compiler": "^2.3.3",
+    "webpack": "^3.1.0"
+  }
+}
