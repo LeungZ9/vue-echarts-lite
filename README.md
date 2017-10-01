@@ -104,7 +104,7 @@ Attribute  | Usage
 config     | `Object`, set the configuration of chart by using [echarts options](https://ecomfe.github.io/echarts-doc/public/en/option.html)<br>Here is some additional configuration:<br>**forceClear** `boolean`, whether to remove chart before update<br>**notMerge** `boolean`, whether not to merge with previous<br>**errorMsg** `Object`, configuration item while error, [more detail](https://ecomfe.github.io/echarts-doc/public/en/api.html#echartsInstance.showLoading)
 theme      | `Object` or `string`,  set the theme of chart
 instance   | Emit a function to get chart instance
-unwatch    | Not register watcher for `config` and `theme`, just takes effort during component mounted
+unwatch    | Cancel watcher for `config` and `theme`, just takes effort during component mounted
 
 ## Running the demo
 
