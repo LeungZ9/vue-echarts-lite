@@ -6,14 +6,15 @@ const webpack = require('webpack');
 const path = require('path');
 
 const IS_DEV = process.env.npm_lifecycle_event === "dev";
-const IS_MIN = process.env.npm_lifecycle_event === "build:min";
+const IS_PRO = !!~process.env.npm_lifecycle_event.indexOf('build')
+const IS_PRO_MIN = process.env.npm_lifecycle_event === "build:min";
 
 module.exports = {
     context: path.resolve('./src'),
     entry: path.resolve("./src/index"),
     output: {
         path: path.resolve('./dist'),
-        filename: 'vue-echarts-lite' + (IS_MIN ? '.min.js' : '.js'),
+        filename: 'vue-echarts-lite' + (IS_PRO_MIN ? '.min.js' : '.js'),
         libraryTarget: "umd"
     },
     externals: {
@@ -31,26 +32,32 @@ module.exports = {
                 loader: 'eslint-loader',
                 enforce: 'pre',
                 exclude: /node_modules/
-              },
-              {
+            },
+            {
                 test: /\.vue$/,
                 loader: 'vue-loader'
-              },
-              {
+            },
+            {
                 test: /\.js$/,
                 loader: 'babel-loader',
                 exclude: /node_modules/,
                 options: {
                     presets: ["es2015"]
                 }
-              }
+            }
         ]
     },
-    plugins: [
+    plugins: IS_PRO ? [
         new webpack.optimize.UglifyJsPlugin({
-            include: /\.min\.js$/
+            include: /\.min\.js$/,
+            compress: {
+                warnings: false
+            }
+        }),
+        new webpack.LoaderOptionsPlugin({
+            minimize: true
         })
-    ],
+    ] : [],
     devServer: {
         contentBase: path.resolve("./demo")
     }
