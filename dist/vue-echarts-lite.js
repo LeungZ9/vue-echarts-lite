@@ -1,10 +1,10 @@
 (function webpackUniversalModuleDefinition(root, factory) {
 	if(typeof exports === 'object' && typeof module === 'object')
-		module.exports = factory(require("Vue"), require("echarts"));
+		module.exports = factory(require("vue"), require("echarts"));
 	else if(typeof define === 'function' && define.amd)
-		define(["Vue", "echarts"], factory);
+		define(["vue", "echarts"], factory);
 	else {
-		var a = typeof exports === 'object' ? factory(require("Vue"), require("echarts")) : factory(root["Vue"], root["echarts"]);
+		var a = typeof exports === 'object' ? factory(require("vue"), require("echarts")) : factory(root["Vue"], root["echarts"]);
 		for(var i in a) (typeof exports === 'object' ? exports : root)[i] = a[i];
 	}
 })(this, function(__WEBPACK_EXTERNAL_MODULE_1__, __WEBPACK_EXTERNAL_MODULE_5__) {
