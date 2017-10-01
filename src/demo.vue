@@ -16,7 +16,7 @@
             <textarea id="echarts-options" @input="configTxtChange" v-model="configTxt" placeholder="echarts options..."></textarea>
         </div>
         <div class="chart-content">
-            <lz-chart v-if="unwatch" key="chart_uw" unwatch :config="config" class="chart" :theme="theme" @instance="inst => { chartInst = inst() }"></lz-chart>
+            <lz-chart v-if="unwatch" key="chart_uw" unwatch :config="config" class="chart" :theme="theme" @instance="chartInst = $event()"></lz-chart>
             <lz-chart v-else :config="config" class="chart" :theme="theme"></lz-chart>
         </div>
     </div>

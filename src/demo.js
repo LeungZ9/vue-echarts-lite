@@ -4,8 +4,10 @@ import demo from './demo.vue';
 
 new vue({
     el: '#demo',
-    template: '<demo></demo>',
-    comments: {
+    render: function(ce){
+        return ce('demo');
+    },
+    components: {
         demo: demo
     }
 });
