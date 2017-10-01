@@ -7,29 +7,38 @@ const path = require('path');
 
 module.exports = {
     context: path.resolve('./src'),
-    entry: path.resolve("./src/demo"),
+    entry: path.resolve('./src/demo'),
     output: {
         filename: 'demo.min.js'
     },
     externals: {
-        vue: "Vue",
-        echarts: "echarts"
+        vue: {
+            root: 'Vue',
+            commonjs: 'vue',
+            commonjs2: 'vue',
+            amd: 'vue'
+        },
+        echarts: 'echarts'
     },
     devServer: {
         disableHostCheck: true,
     },
     devtool: false,
+    plugins: [
+        new webpack.LoaderOptionsPlugin({
+            minimize: true
+        })
+    ],
     module: {
         rules: [
             {
-                test: /\.(js|vue)$/,
-                loader: 'eslint-loader',
-                enforce: 'pre',
-                exclude: /node_modules/
+                test: /\.js$/,
+                exclude: /node_modules/,
+                loader: 'eslint-loader'
             },
             {
                 test: /\.vue$/,
-                loader: 'vue-loader'
+                loader: ['vue-loader', 'eslint-loader']
             }
         ]
     }
