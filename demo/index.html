@@ -69,11 +69,11 @@
             <textarea id="echarts-options" @input="configTxtChange" v-model="configTxt" placeholder="echarts options..."></textarea>
         </div>
         <div class="chart-content">
-            <lz-chart v-if="unwatch" key="chart_uw" unwatch :config="config" class="chart" :theme="theme" @instance="getChartInst"></lz-chart>
+            <lz-chart v-if="unwatch" key="chart_uw" unwatch :config="config" class="chart" :theme="theme" @instance="chartInst = $event()"></lz-chart>
             <lz-chart v-else :config="config" class="chart" :theme="theme"></lz-chart>
         </div>
     </div>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.0.0/vue.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.4.0/vue.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/echarts/3.7.1/echarts.min.js"></script>
     <script src="./theme/vintage.js"></script>
     <script src="./theme/dark.js"></script>
@@ -82,7 +82,7 @@
     <script type="text/javascript">
         "use strict";
         (function () {
-            var timeout, chartInst;
+            var timeout;
             new Vue({
                 el: '#demo',
                 data: function () {
@@ -128,7 +128,8 @@
                         unwatch: false,
                         unwatchDesc: '\'unwatch\' just takes effort once on conponent mounted. While on unwatch, it will skip watcher for \'theme\' and \'config\'. Instead, you must update chart via chart instance api by yourself',
                         config: config,
-                        configTxt: JSON.stringify(config, null, 2)
+                        configTxt: JSON.stringify(config, null, 2),
+                        chartInst: null
                     }
                 },
                 methods: {
@@ -138,20 +139,17 @@
                             this.config = JSON.parse(this.configTxt);
                             // If not register scope watcher, update chart via API on chart instance
                             if (this.unwatch) {
-                                chartInst.setOption(this.config);
+                                this.chartInst.setOption(this.config);
                             }
                         }.bind(this), 300);
                     },
                     themeChange: function () {
                         // If not register scope watcher, update chart via API on chart instance
                         if(this.unwatch){
-                            chartInst.dispose();
-                            chartInst = echarts.init(chartInst.getDom(), this.theme);
-                            chartInst.setOption(this.config);                            
+                            this.chartInst.dispose();
+                            this.chartInst = echarts.init(this.chartInst.getDom(), this.theme);
+                            this.chartInst.setOption(this.config);                            
                         }
-                    },
-                    getChartInst: function (inst){
-                        chartInst = inst();
                     }
                 }
             })
