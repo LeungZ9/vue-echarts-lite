@@ -19,10 +19,26 @@ module.exports = {
     },
     devtool: false,
     plugins: [
+        new webpack.DefinePlugin({
+            'process.env': {
+                'NODE_ENV': JSON.stringify('production')
+            }
+        }),
+        new webpack.optimize.UglifyJsPlugin({
+            compress: {
+                warnings: false
+            },
+            comments: false
+        }),
         new webpack.LoaderOptionsPlugin({
             minimize: true
         })
     ],
+    resolve: {
+        alias: {
+            'vue$': 'vue/dist/vue.runtime.js'
+        }
+    },
     module: {
         rules: [
             {

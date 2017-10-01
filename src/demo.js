@@ -1,8 +1,7 @@
-import vue from 'vue';
-import 'vue-echarts-lite';
+import Vue from 'vue';
 import demo from './demo.vue';
 
-new vue({
+new Vue({
     el: '#demo',
     render: function(ce){
         return ce('demo');

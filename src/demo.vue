@@ -26,6 +26,7 @@ import echarts from 'echarts';
 import 'echarts/theme/vintage';
 import 'echarts/theme/dark';
 import 'echarts/theme/macarons';
+import chart from 'vue-echarts-lite/src/vue-echarts-lite.vue';
 
 export default {
     name: 'demo',
@@ -77,11 +78,18 @@ export default {
             timeout: null,
         };
     },
+    components:{
+        'lzChart': chart
+    },
     methods: {
         configTxtChange: function() {
             clearTimeout(this.timeout);
             this.timeout = setTimeout(function() {
-                this.config = JSON.parse(this.configTxt);
+                try {
+                    this.config = JSON.parse(this.configTxt);
+                } catch (e) {
+                    alert(e);
+                }
                 // If not register scope watcher, update chart via API on chart instance
                 if (this.unwatch) {
                     this.chartInst.setOption(this.config);
