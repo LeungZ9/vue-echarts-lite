@@ -1,10 +1,10 @@
 import Vue from 'vue';
 import comp from './vue-echarts-lite.vue';
 
-class component{
+class Component{
     install(){
         Vue.component('lz-chart', comp);
     }
 }
 
-export default Vue.use(new component());
+export default Vue.use(new Component());
