@@ -136,12 +136,14 @@
                         clearTimeout(timeout);
                         timeout = setTimeout(function () {
                             this.config = JSON.parse(this.configTxt);
+                            // If not register scope watcher, update chart via API on chart instance
                             if (this.unwatch) {
                                 chartInst.setOption(this.config);
                             }
                         }.bind(this), 300);
                     },
                     themeChange: function () {
+                        // If not register scope watcher, update chart via API on chart instance
                         if(this.unwatch){
                             chartInst.dispose();
                             chartInst = echarts.init(chartInst.getDom(), this.theme);
