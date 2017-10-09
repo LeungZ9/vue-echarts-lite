@@ -6,7 +6,6 @@ const webpack = require('webpack');
 const path = require('path');
 
 const IS_DEV = process.env.npm_lifecycle_event === "dev";
-const IS_PRO = !!~process.env.npm_lifecycle_event.indexOf('build')
 const IS_PRO_MIN = process.env.npm_lifecycle_event === "build:min";
 
 module.exports = {
@@ -52,7 +51,7 @@ module.exports = {
             }
         ]
     },
-    plugins: IS_PRO ? [
+    plugins: [
         new webpack.optimize.UglifyJsPlugin({
             include: /\.min\.js$/,
             compress: {
@@ -62,7 +61,7 @@ module.exports = {
         new webpack.LoaderOptionsPlugin({
             minimize: true
         })
-    ] : [],
+    ],
     devServer: {
         contentBase: path.resolve("./demo")
     }
