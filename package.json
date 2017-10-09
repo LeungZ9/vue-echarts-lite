@@ -8,7 +8,7 @@
     "dist": "npm run clean && npm run build && npm run build:min",
     "clean": "del-cli dist/**",
     "dev": "npm run clean && webpack-dev-server --progress --open",
-    "test": "karma start --single-run=false --auto-watch"
+    "test": "karma start --single-run"
   },
   "repository": {
     "type": "git",
