@@ -14,9 +14,9 @@ module.exports = function (config) {
     browsers: ['PhantomJS'],
     frameworks: ['mocha', 'chai', 'phantomjs-shim'],
     reporters: ['spec'],
-    files: ['test/unit/index.js'],
+    files: ['test/vue-echarts-lite.spec.js'],
     preprocessors: {
-      'test/unit/index.js': ['webpack', 'sourcemap']
+      'test/vue-echarts-lite.spec.js': ['webpack', 'sourcemap']
     },
     webpack: Object.assign({}, webpackConfig, {
       devtool: '#inline-source-map',
