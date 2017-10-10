@@ -3,6 +3,7 @@ import VueEchartsLite from '../src/vue-echarts-lite.vue';
 
 Vue.config.productionTip = false;
 
+// Minimized configuration of echarts
 const miniConf = {
     xAxis: {
         name: 'x',
