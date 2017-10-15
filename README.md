@@ -78,10 +78,13 @@ That's all! Now you can get up and running the demo.
 
 ## Use vue echarts lite with webpack
 
-You can obtain vue echarts lite directly in project via webpack as a global component registered automatically
+You can obtain vue echarts lite directly in project via webpack to register a global component
 
 ```js
-require('vue-echarts-lite')
+var chart = require('vue-echarts-lite')
+
+// To install vue echarts lite
+Vue.use(chart)
 ```
 
 To use local registration
