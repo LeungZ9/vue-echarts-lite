@@ -106,7 +106,7 @@ Attribute  | Usage
 ---        | ---
 config     | `Object`, set the configuration of chart by using [echarts options](https://ecomfe.github.io/echarts-doc/public/en/option.html)<br>Here is some additional configuration:<br>**forceClear** `boolean`, whether to remove chart before update<br>**notMerge** `boolean`, whether not to merge with previous<br>**errorMsg** `Object`, configuration item while error, [more detail](https://ecomfe.github.io/echarts-doc/public/en/api.html#echartsInstance.showLoading)
 theme      | `Object` or `string`,  set the theme of chart
-unwatch    | `Boolean`, Cancel watcher for `config` and `theme`, just takes effort during component mounted
+unwatch    | `Boolean`, cancel watcher for `config` and `theme`, just takes effort during component mounted
 
 
 While unwatch set, you must update chart via component instance by yourself as below:
@@ -126,7 +126,7 @@ Attribute  | Usage
 ---        | ---
 setOptions | `Method`, handle the configuration of chart 
 setTheme   | `Method`, handle the theme of chart
-chart      | `Object`, a echarts instance after echarts initialize
+chart      | `Object`, echarts instance after echarts initialize
 
 ## Running the demo
 
