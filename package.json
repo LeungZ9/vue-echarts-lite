@@ -1,6 +1,6 @@
 {
   "name": "vue-echarts-lite",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "vue component for baidu echarts",
   "scripts": {
     "build": "mkdirp dist && webpack --progress --colors",
