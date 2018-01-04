@@ -12,12 +12,12 @@ export default {
     theme: [String, Object],
     unwatch: Boolean
   },
-  data() {
+  data: function() {
     return {
       chart: ''
     }
   },
-  mounted() {
+  mounted: function() {
     this.chart = echarts.init(this.$el, this.theme)
     this.setOptions(this.config)
 
@@ -36,7 +36,7 @@ export default {
      * @param {echartsOptions} options
      * @private
      */
-    setOptions(options) {
+    setOptions: function(options) {
       options = options || {}
       options.forceClear && this.chart.clear()
       if (options.series && options.series.length) {
@@ -54,7 +54,7 @@ export default {
      * @param {echartsTheme} theme
      * @private
      */
-    setTheme(theme) {
+    setTheme: function(theme) {
       this.chart.dispose()
       this.chart = echarts.init(this.$el, theme)
       this.chart.setOption(this.config)

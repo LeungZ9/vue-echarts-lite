@@ -31,12 +31,11 @@ describe('vue-echarts-lite.vue', () => {
     });
 
     it('should return correct chart instance', () => {
-        let event;
         const Constructor = Vue.extend(VueEchartsLite);
         const vm = new Constructor({
             propsData: { config: miniConf }
-        }).$on('instance', $e => { event = $e; }).$mount();
-        expect(event().constructor.name).to.equal('ECharts');
-        expect(event().id).to.equal(vm.$el.getAttribute('_echarts_instance_'));
+        }).$mount();
+        expect(vm.chart.constructor.name).to.equal('ECharts');
+        expect(vm.chart.id).to.equal(vm.$el.getAttribute('_echarts_instance_'));
     });
 });
