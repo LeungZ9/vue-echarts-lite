@@ -121,6 +121,7 @@ this.$refs.instance.chart.setOption(this.config)
 ```
 
 Also here are all properties for the component instance you can use
+
 Attribute  | Usage
 ---        | ---
 setOptions | `Method`, handle the configuration of chart 
