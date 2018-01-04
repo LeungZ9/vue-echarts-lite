@@ -69,7 +69,7 @@
             <textarea id="echarts-options" @input="configTxtChange" v-model="configTxt" placeholder="echarts options..."></textarea>
         </div>
         <div class="chart-content">
-            <lz-chart v-if="unwatch" key="chart_uw" unwatch :config="config" class="chart" :theme="theme" @instance="chartInst = $event()"></lz-chart>
+            <lz-chart v-if="unwatch" key="chart_uw" unwatch :config="config" class="chart" :theme="theme" ref="inst"></lz-chart>
             <lz-chart v-else :config="config" class="chart" :theme="theme"></lz-chart>
         </div>
     </div>
@@ -126,10 +126,9 @@
                     return {
                         theme: '',
                         unwatch: false,
-                        unwatchDesc: '\'unwatch\' just takes effort once on conponent mounted. While on unwatch, it will skip watcher for \'theme\' and \'config\'. Instead, you must update chart via chart instance api by yourself',
+                        unwatchDesc: '\'unwatch\' just takes effort once on conponent mounted. While on unwatch, it will skip watcher for \'theme\' and \'config\'. Instead, you must update chart via component instance by yourself',
                         config: config,
-                        configTxt: JSON.stringify(config, null, 2),
-                        chartInst: null
+                        configTxt: JSON.stringify(config, null, 2)
                     }
                 },
                 methods: {
@@ -139,16 +138,14 @@
                             this.config = JSON.parse(this.configTxt);
                             // If not register scope watcher, update chart via API on chart instance
                             if (this.unwatch) {
-                                this.chartInst.setOption(this.config);
+                                this.$refs.inst.chart.setOption(this.config);
                             }
                         }.bind(this), 300);
                     },
                     themeChange: function () {
                         // If not register scope watcher, update chart via API on chart instance
-                        if(this.unwatch){
-                            this.chartInst.dispose();
-                            this.chartInst = echarts.init(this.chartInst.getDom(), this.theme);
-                            this.chartInst.setOption(this.config);                            
+                        if (this.unwatch) {
+                            this.$refs.inst.setTheme(this.theme);
                         }
                     }
                 }
