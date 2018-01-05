@@ -8,5 +8,5 @@ this.$refs.inst.chart.setOption(this.config)
 ```
 Handle theme change via component instance
 ```js
-this.$refs.inst.setTheme(this.config)
+this.$refs.inst.setTheme(this.theme)
 ```
