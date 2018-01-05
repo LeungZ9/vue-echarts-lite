@@ -1,24 +1,44 @@
 <!DOCTYPE html>
 <html>
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-    <style type="text/css">
-        body {
-            position: absolute;
-            top: 0;
-            bottom: 0;
-            left: 0;
-            right: 0;
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="storybook-version" content="3.3.3">
+    <meta content="IE=edge" http-equiv="X-UA-Compatible" />
+    <title>Storybook</title>
+    <style>
+        /*
+          When resizing panels, the drag event breaks if the cursor
+          moves over the iframe. Add the 'dragging' class to the body
+          at drag start and remove it when the drag ends.
+         */
+        .dragging iframe {
+            pointer-events: none;
+        }
+
+        /* Styling the fuzzy search box placeholders */
+        .searchBox::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+            color: #ddd;
+            font-size: 16px;
+        }
+
+        .searchBox::-moz-placeholder { /* Firefox 19+ */
+            color: #ddd;
+            font-size: 16px;
+        }
+
+        .searchBox:focus{
+            border-color: #EEE !important;
+        }
+
+        .btn:hover{
+            background-color: #eee
         }
     </style>
-</head>
-<body>
-    <div id="demo"></div>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/echarts/3.0.0/echarts.min.js"></script>
-    <script src="demo.min.js"></script>
-</body>
+    
 
+</head>
+<body style="margin: 0;">
+    <div id="root"></div>
+<script type="text/javascript" src="static/manager.16af4975f5ca553d0613.bundle.js"></script></body>
 </html>

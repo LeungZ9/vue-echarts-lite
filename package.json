@@ -3,24 +3,25 @@
   "version": "1.0.0",
   "description": "demo for vue-echarts-lite",
   "scripts": {
-    "build": "npm run clean && webpack -p --progress --colors",
-    "clean": "del-cli demo.min.js"
+    "sb": "start-storybook -p 9001 -c .storybook",
+    "sb:build": "build-storybook -c .storybook -o ."
   },
   "author": "LeungZ",
   "license": "MIT",
   "dependencies": {
-    "vue": "2.0.4",
+    "vue": "^2.0.4",
     "vue-echarts-lite": "^1.0.2"
   },
   "devDependencies": {
+    "@storybook/addon-notes": "^3.3.3",
+    "@storybook/vue": "^3.3.3",
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2",
     "css-loader": "^0.28.7",
-    "del-cli": "^1.0.0",
-    "eslint": "^4.2.0",
-    "eslint-loader": "^1.9.0",
-    "eslint-plugin-vue": "^3.1.0",
-    "uglifyjs-webpack-plugin": "^0.4.6",
-    "vue-loader": "^13.0.5",
-    "vue-template-compiler": "2.0.4",
+    "html-loader": "^0.5.1",
+    "markdown-loader": "^2.0.1",
+    "vue-loader": "^13.6.1",
+    "vue-template-compiler": "^2.0.4",
     "webpack": "^3.1.0"
   }
 }
