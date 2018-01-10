@@ -126,7 +126,7 @@ Attribute  | Usage
 ---        | ---
 setOptions | `Method`, handle the configuration of chart 
 setTheme   | `Method`, handle the theme of chart
-chart      | `Object`, echarts instance after echarts initialized, [more detail](https://ecomfe.github.io/echarts-doc/public/en/api.html#echartsInstance)
+chart      | `Object`, echarts instance after echarts initialized with DOM, [more detail](https://ecomfe.github.io/echarts-doc/public/en/api.html#echartsInstance)
 
 ## Running the demo
 
