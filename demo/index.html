@@ -61,16 +61,12 @@
                     <option value="vintage">Vintage</option>
                     <option value="dark">Dark</option>
                     <option value="macarons">Macarons</option>
-                </select>&nbsp;&emsp;
-                <label for="echarts-unwatch">Unwatch</label>
-                <input type="checkbox" v-model="unwatch" id="echarts-unwatch" />
-                <div class="well" v-show="unwatch" v-text="unwatchDesc"></div>
+                </select>
             </div>
             <textarea id="echarts-options" @input="configTxtChange" v-model="configTxt" placeholder="echarts options..."></textarea>
         </div>
         <div class="chart-content">
-            <lz-chart v-if="unwatch" key="chart_uw" unwatch :config="config" class="chart" :theme="theme" ref="inst"></lz-chart>
-            <lz-chart v-else :config="config" class="chart" :theme="theme"></lz-chart>
+            <lz-chart :config="config" class="chart" :theme="theme"></lz-chart>
         </div>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.4.0/vue.min.js"></script>
@@ -125,8 +121,6 @@
                     };
                     return {
                         theme: '',
-                        unwatch: false,
-                        unwatchDesc: '\'unwatch\' just takes effort once on conponent mounted. While on unwatch, it will skip watcher for \'theme\' and \'config\'. Instead, you must update chart via component instance by yourself',
                         config: config,
                         configTxt: JSON.stringify(config, null, 2)
                     }
@@ -136,18 +130,9 @@
                         clearTimeout(timeout);
                         timeout = setTimeout(function () {
                             this.config = JSON.parse(this.configTxt);
-                            // If not register scope watcher, update chart via API on chart instance
-                            if (this.unwatch) {
-                                this.$refs.inst.chart.setOption(this.config);
-                            }
                         }.bind(this), 300);
                     },
-                    themeChange: function () {
-                        // If not register scope watcher, update chart via API on chart instance
-                        if (this.unwatch) {
-                            this.$refs.inst.setTheme(this.theme);
-                        }
-                    }
+                    themeChange: function () {}
                 }
             })
         })()
