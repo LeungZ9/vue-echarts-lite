@@ -94,6 +94,20 @@ var chart = require('vue-echarts-lite/src/vue-echarts-lite.vue')
 //To do component registration
 ```
 
+Require charts and components on demand
+```js
+//Config in webpack config --- Start
+resolve: {
+    alias: 'echarts$': 'echarts/lib/echarts'
+}
+//Config in webpack config --- End
+
+//Require on demand in webpack entry --- Start
+import 'echarts/lib/chart/line'
+import 'echarts/lib/component/tooltip'
+//Require on demand in webpack entry --- End
+```
+
 ## Usage
 
 ```html
