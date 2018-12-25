@@ -26,8 +26,7 @@
   },
   "homepage": "https://github.com/LeungZ9/vue-echarts-lite",
   "dependencies": {
-    "echarts": "^3.0.0",
-    "vue": "^2.5.13"
+    "echarts": "^3.0.0"
   },
   "peerDependencies": {
     "vue": "^2.0.0"
